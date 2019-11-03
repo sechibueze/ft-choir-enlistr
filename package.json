@@ -1,0 +1,30 @@
+{
+  "name": "ft-choir-app",
+  "version": "1.0.0",
+  "description": "A web app for automation of the  registeration process of faith tabernacle choir members for shiloh 2019",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sechibueze/ft-choir-app.git"
+  },
+  "keywords": [
+    "shiloh2019",
+    "faith",
+    "tabernacle",
+    "canaanland",
+    "choir",
+    "ictg"
+  ],
+  "author": "ft-ictg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sechibueze/ft-choir-app/issues"
+  },
+  "homepage": "https://github.com/sechibueze/ft-choir-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
