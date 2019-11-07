@@ -4,6 +4,11 @@
   "description": "A web app for automation of the  registeration process of faith tabernacle choir members for shiloh 2019",
   "main": "server.js",
   "scripts": {
+    "create-db-tables": "node src/models/DBTables.js createTables",
+    "predev": "npm run create-db-tables",
+    "dev": "nodemon src/server.js",
+    "prestart": "npm run create-db-tables",
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +30,22 @@
   },
   "homepage": "https://github.com/sechibueze/ft-choir-app#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "google-libphonenumber": "^3.2.6",
+    "make-runnable": "^1.3.6",
+    "nexmo": "^2.5.1",
+    "otp-generator": "^1.1.0",
+    "pg": "^7.11.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/node": "^7.6.3",
+    "nodemon": "^1.19.4"
   }
 }

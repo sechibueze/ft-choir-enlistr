@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Enlistr | Member Register</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="">
+</head>
+
+<body>
+  <form name="member-login" method="POST" action="">
+    <div class="message">
+      <small> Any message showsws here</small>
+    </div>
+    <div class="form-group">
+      <label for="member-id">Member ID:</label>
+      <input type="text" name="id" class="form-control" placeholder="Enter your ID">
+    </div>
+
+    <div class="form-group">
+      <label for="surname">Surname:</label>
+      <input name="surname" type="text" value="Chibueze" class="form-control" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="firstname">Firstname:</label>
+      <input type="text" name="firstname" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="middlename">Middlename:</label>
+      <input type="text" name="middlename" class="form-control">
+    </div>
+
+    <div class="form-group">
+      <label for="middlename">Middlename:</label>
+      <input type="text" name="middlename" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="text" name="phone" placeholder="081..." max="11" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="gender">Group:</label>
+      <input type="text" name="group" min="01" max="51" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="group">Gender:</label>
+      <select name="gender" class="form-control">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="part">Part:</label>
+      <select name="part" class="form-control">
+        <option value="alto">Alto</option>
+        <option value="suprano">Suprano</option>
+        <option value="tenor">Tenor</option>
+        <option value="musician">Musician</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="availability">Availability:</label>
+      <label class="form-control"><input type="checkbox" name="Tuesday"> Tuesday</label>
+      <label class="form-control"><input type="checkbox" name="Wednesday"> Wednesday</label>
+      <label class="form-control"><input type="checkbox" name="Thursday"> Thursday</label>
+      <label class="form-control"><input type="checkbox" name="Friday"> Friday</label>
+      <label class="form-control"><input type="checkbox" name="Saturday"> Saturday</label>
+      <label class="form-control"><input type="checkbox" name="Sunday"> Sunday</label>
+    </div>
+
+    <button name="register" type="submit" class="btn">Register</button>
+  </form>
+
+</body>
+
+</html>
