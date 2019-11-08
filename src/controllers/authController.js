@@ -4,6 +4,23 @@ const Qualifier = new Model('qualifiers');
 const Member = new Model('members');
 const router = express.Router();
 
+
+router.get('/', (req, res) => {
+  Qualifier.select('choir_id, surname').then(({ rows }) => {
+    // console.log('rows:', rows)
+    if (rows.length === 0) {
+      return res.render('admin', { message: `Success: No Qualifiers yet` });
+    } else {
+      const data = rows;
+      return res.render('admin', { message: `Success: Qualifiers `, data });
+    }
+
+  }).catch(e => {
+    return res.render('admin', { message: `Oops! Request Unprocessed` });
+  });
+
+});
+
 router.get('/enlist', (req, res) => {
   return res.render('enlist');
 });

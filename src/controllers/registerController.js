@@ -6,7 +6,7 @@ const Model = require('../models/model');
 const Member = new Model('members');
 const router = express.Router();
 const Nexmo = require('nexmo');
-
+const checkAuth = require('../middlewares/checkAuth');
 const nexmo = new Nexmo({
   apiKey: process.env.NEXMO_API_KEY,
   apiSecret: process.env.NEXMO_SECRET_KEY,
@@ -14,7 +14,7 @@ const nexmo = new Nexmo({
 
 
 
-router.get('/', (req, res) => {
+router.get('/', checkAuth, (req, res) => {
   if (req.session.member) {
 
     const data = req.session.member;

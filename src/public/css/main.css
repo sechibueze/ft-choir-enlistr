@@ -4,6 +4,18 @@
 html, ul, body{ 
   margin: 0;
   padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+  text-align: center;
+}
+a:hover{
+  text-decoration: underline;
+  font-weight: 700;
 }
 
 body{
@@ -17,6 +29,18 @@ body{
   display: block;
   clear: both;
   content: "";
+}
+.navlinks{
+  margin: 15px auto;
+  text-align: center;
+}
+.navlinks a{
+color: #100;
+padding: 5px 10px;
+
+}
+.navlinks a:nth-last-of-type(2){
+  margin: 0px 5px;
 }
 .message{
   width: 80%;
@@ -108,3 +132,107 @@ th, td{
   color: #100;
   text-align: center;
 }
+
+section[id]{
+  margin: auto;
+  text-align: center;
+}
+.heading{
+  text-align: left;
+}
+article.doc{
+  text-align: left;
+  line-height: 1.5;
+}
+
+
+/* Admin */
+.dash-hamburger{
+  font-size: 3.5em;
+  padding: 2px;
+}
+.clearfix::after,
+    .row::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+
+    .sidebar {
+      display: none;
+
+    }
+
+    .title {
+
+      margin: auto;
+      padding: 5px;
+    }
+
+    .close {
+      float: right;
+
+      text-align: center;
+      padding: 3px;
+      background: #100;
+      color: beige;
+      font-size: 1.0em;
+    }
+
+    .close::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+
+
+    .sidebar ul li {
+      margin: 3px auto;
+      padding: 2px 5px;
+      text-align: left;
+    }
+
+    .sidebar ul li a {
+      color: #2ee;
+      font-size: 1.1em;
+      padding: 2px;
+    }
+
+    /* With .show, show .sidebar, shrink .main */
+
+    .show .sidebar {
+      background: #409222;
+
+      padding: 2px 10px;
+      padding-right: 0;
+      display: block;
+      float: left;
+      width: 30%;
+
+    }
+
+    .show .main {
+      /* display: none; */
+      margin-left: 31%;
+    }
+
+    /* Main style */
+
+    .main {
+      background: #320dcc;
+      color: #fff;
+      padding: 15px 20px;
+
+    }
+
+
+
+
+
+    .dash-add-link {
+      float: right;
+      padding: 10px 12px;
+      border: 1px solid #100;
+      background: #ccc;
+      color: #100;
+    }

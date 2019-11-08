@@ -2,12 +2,9 @@
 <% include partials/header %>
 
 <body>
-
+  <% include partials/navbar %>
   <div class="container">
-    <div class="images">
-      <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
-      <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
-    </div>
+
     <% if(data.length === 1) {
     data.forEach(member => {
       let count = 0;
@@ -17,7 +14,7 @@
       <thead>
         <tr>
           <th> Fields</th>
-          <th>Values</th>
+          <th>Entries</th>
         </tr>
       </thead>
       <tbody>
@@ -78,13 +75,13 @@
       <%}%>
               <div class="form-group">
                 <label for="choir_id">Member ID:</label>
-                <input type="text" name="choir_id" required class="form-control" placeholder="Enter your ID">
+                <input type="text" maxlength="9" pattern="^(FTCHR)\d{4}" title="You have not entered a valid ID" name="choir_id" required class="form-control" placeholder="Enter your ID">
               </div>
               <!-- <div class="form-group">
                 <label for="otp">OTP:</label>
                 <input type="text" minlength="6" maxlength="6" name="otp" class="form-control" placeholder="Enter your OTP">
               </div> -->
-              <button name="search" type="submit" class="btn">Search</button>
+              <button name="search" type="submit" class="btn">Search <i class="fa fa-search"></i></button>
             </form>
 
     <% }%>

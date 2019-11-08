@@ -1,0 +1,65 @@
+<% let title = 'Admin Dashboard' %>
+<% include partials/header %>
+
+<body>
+  <div class="container">
+    <div class="content">
+      <span class="dash-hamburger"><i class="fa fa-bars"></i></span>
+      <div class="dash-container">
+        <div class="sidebar">
+          <span class="close">X</span>
+
+          <div class="row user">
+            <h2 class="title"> Enlistr</h2>
+
+          </div>
+          <% include partials/sidebar %>
+        </div>
+        <div class="main">
+          <a href="/auth/enlist" class="dash-add-link clearfix">Enlist &nbsp; <i class="fa fa-plus-circle"></i> </a>
+          <% if (message) {%>
+          <article class="message"> <%= message %>:(</article>
+          <%}%>
+
+          <table>
+            <thead>
+              <tr>
+                <th>S/N</th>
+                <th>Choir_ID</th>
+                <th>Surname</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <% if (data.length > 0) {
+                    data.forEach(member => {
+                      let count = 0;
+                  %>
+          <tr>
+            <td><%= ++count %></td>
+            <td><%= member.choir_id %></td>
+            <td><%= member.surname %></td>
+
+          </tr>
+
+          <% 
+                    })} else {
+                  %>
+          <h1> No List yet </h1>
+          <% }%>
+
+
+          </tbody>
+          </table>
+
+
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="/js/admin-dashboard.js"></script>
+</body>
+
+</html>

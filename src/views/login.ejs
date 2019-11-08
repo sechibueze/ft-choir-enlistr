@@ -2,13 +2,10 @@
 <% include partials/header %>
 
 <body>
+  <% include partials/navbar %>
   <div class="container">
-    <% include partials/navbar %>
     <form name="member-login" method="POST" action="/login">
-      <div class="images">
-        <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
-        <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
-      </div>
+
       <% if (message) {%>
       <article class="message"> <%= message %></article>
       <%}%>
@@ -16,7 +13,7 @@
           <label for="member-id">Choir ID:</label>
           <input type="text" maxlength="9" pattern="^(FTCHR)\d{4}" title="You have not entered a valid ID" required name="choir_id" class="form-control" placeholder="Enter your Choir ID">
         </div>
-        <button name="search" id="login-btn" type="submit" class="btn">Login</button>
+        <button name="search" id="login-btn" type="submit" class="btn">Login <i class="fa fa-sign-in"></i></button>
       </form>
   </div>
   <script src=""></script>

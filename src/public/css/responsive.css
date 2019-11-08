@@ -8,6 +8,15 @@
     width: 60%;
     margin: auto;
   }
+  
+      .close,
+      .dash-hamburger {
+        display: inline-block;
+      }
+
+      .main {
+        height: 100%;
+      }
  }
 
 /* // Medium devices (tablets, 768px and up) */
@@ -32,5 +41,8 @@
 @media (min-width: 1200px) {
   body{
     background: #edf;
+  }
+  .container{
+    width: 60%;
   }
 }
