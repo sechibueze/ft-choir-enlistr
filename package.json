@@ -4,7 +4,7 @@
   "description": "A web app for automation of the  registeration process of faith tabernacle choir members for shiloh 2019",
   "main": "server.js",
   "scripts": {
-    "create-db-tables": "node src/models/DBTables.js createTables",
+    "create-db-tables": "node src/models/DbTables.js createTables",
     "predev": "npm run create-db-tables",
     "dev": "nodemon src/server.js",
     "prestart": "npm run create-db-tables",

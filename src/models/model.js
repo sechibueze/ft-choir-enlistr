@@ -1,4 +1,3 @@
-
 const { pool } = require('./DbTables');
 
 module.exports = class Model {
