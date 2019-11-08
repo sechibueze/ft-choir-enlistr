@@ -1,25 +1,24 @@
-<!DOCTYPE html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Member Login</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/css/main.css">
-</head>
+<% let title = 'Member Login' %>
+<% include partials/header %>
 
 <body>
-  <form name="member-login" method="POST" action="/login">
-    <% if (message) {%>
-    <article class="message"> <%= message %>:(</article>
-    <%}%>
-    <div class="form-group">
-      <label for="member-id">Member ID:</label>
-      <input type="text" name="id" class="form-control" placeholder="Enter your ID">
-    </div>
-    <button name="search" type="submit" class="btn">Search</button>
-  </form>
+  <div class="container">
+    <% include partials/navbar %>
+    <form name="member-login" method="POST" action="/login">
+      <div class="images">
+        <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
+        <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
+      </div>
+      <% if (message) {%>
+      <article class="message"> <%= message %></article>
+      <%}%>
+        <div class="form-group">
+          <label for="member-id">Choir ID:</label>
+          <input type="text" maxlength="9" pattern="^(FTCHR)\d{4}" title="You have not entered a valid ID" required name="choir_id" class="form-control" placeholder="Enter your Choir ID">
+        </div>
+        <button name="search" id="login-btn" type="submit" class="btn">Login</button>
+      </form>
+  </div>
   <script src=""></script>
 </body>
 

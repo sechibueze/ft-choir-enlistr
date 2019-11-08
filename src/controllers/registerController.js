@@ -16,12 +16,14 @@ const nexmo = new Nexmo({
 
 router.get('/', (req, res) => {
   if (req.session.member) {
-    console.log('Redirected : ', req.session.member);
+
     const data = req.session.member;
     return res.render('register', { data });
+  } else {
+    return res.render('error', { message: 'Auth failed :( - Jn 10:1' });
   }
 
-  return res.render('error', { message: 'You are gatecrashing' });
+
 });
 
 
@@ -34,7 +36,7 @@ router.post('/', (req, res) => {
     sessionData = req.session.member;
   const member = { ...newData, ...sessionData };
 
-  console.log('member :', member);
+
   // Generate OTP - One Time Password
   const otp = otpg.generate(6, { uppercase: false, specialChars: false });
   // Retrieve all member variables
@@ -67,28 +69,35 @@ router.post('/', (req, res) => {
       const to = `${phoneNumber}`;
       const from = process.env.NEXMO_PHONE_NUMBER;
       const text = `
-      IHD-${surname}-${choir_id}, 
+      IHD!
+      Dear ${surname}-${choir_id}, 
       Your OTP is: ${otp};
-      Please, come with this for verification`;
+      Please, come with this for verification
+      `;
       const data = { from, to, text };
-      console.log('data: ', data);
+      // console.log('data: ', data);
       nexmo.message.sendSms(from, to, text, (err, responseData) => {
         if (err) {
-          console.log(err);
+          return res.render('success',
+            { message: `You may need to confirm your submission <a class='link' href='/confirm'> Confirm </a>` });
         } else {
           if (responseData.messages[0]['status'] === "0") {
-            console.log("Message sent successfully.", responseData.messages);
+            // console.log("Message sent successfully.", responseData.messages);
             req.session.member = null;
             return res.render('success', { message: text });
           } else {
-            console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+
+            return res.render('success',
+              { message: `You may need to confirm your submission ${confirmLink}` });
           }
         }
       });
 
     })
     .catch(e => {
-      console.log('Error in inserting: ', e);
+
+      return res.render('error',
+        { message: `Unprocessed: You may have registered, please confirm` });
     });
 
 });

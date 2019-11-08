@@ -1,0 +1,30 @@
+<% let title = 'Application Reset - Irreversible' %>
+<% include partials/header %>
+
+<body>
+  <div class="container">
+    <% include partials/navbar %>
+    <form name="member-login" method="POST" action="/auth/reset">
+      <div class="images">
+        <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
+        <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
+      </div>
+      <% if (message) {%>
+      <article class="message"> <%= message %></article>
+      <%}%>
+        <div class="form-group">
+          <label for="member-id">This process is irreversible:</label>
+          <select name="table">
+            <option value="qualifiers">Qualifiers</option>
+            <option value="members">Members</option>
+            <option value="others" selected>Others</option>
+          </select>
+         
+        </div>
+        <button name="search" id="login-btn" type="submit" class="btn">Reset</button>
+      </form>
+  </div>
+  <script src=""></script>
+</body>
+
+</html>

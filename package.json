@@ -47,5 +47,9 @@
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
     "nodemon": "^1.19.4"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.4.1"
   }
 }

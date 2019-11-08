@@ -1,71 +1,69 @@
-<!DOCTYPE html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title> Enlistr | Member Register</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="">
-</head>
+<% let title = 'Member Registeration' %>
+<% include partials/header %>
 
 <body>
-  <form name="member-login" method="POST" action="">
-    <div class="message">
-      <small> Any message showsws here</small>
-    </div>
-    <div class="form-group">
-      <label for="member-id">Member ID:</label>
-      <input type="text" disabled name="choir_id" class="form-control" value="<%= data.choir_id %>">
-    </div>
+  <% include partials/navbar %>
+  <div class="container">
+    <form name="member-login" method="POST" action="">
+      <div class="images">
+        <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
+        <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
+      </div>
+      <% if (message) {%>
+      <article class="message"> <%= message %></article>
+      <%}%>
+      <div class="form-group">
+        <label for="member-id">Member ID:</label>
+        <input type="text"  pattern="^(FTCHR)\d{4}" disabled name="choir_id" class="form-control" value="<%= data.choir_id %>">
+  </div>
 
-    <div class="form-group">
-      <label for="surname">Surname:</label>
-      <input name="surname" type="text" value="<%= data.surname %>" class="form-control" disabled>
-    </div>
+  <div class="form-group">
+    <label for="surname">Surname:</label>
+    <input name="surname" type="text" value="<%= data.surname %>" class="form-control" disabled>
+  </div>
 
-    <div class="form-group">
-      <label for="firstname">Firstname:</label>
-      <input type="text" name="firstname" class="form-control">
-    </div>
+  <div class="form-group">
+    <label for="firstname">Firstname:</label>
+    <input type="text" required name="firstname" class="form-control">
+  </div>
 
-    <div class="form-group">
-      <label for="middlename">Middlename:</label>
-      <input type="text" name="middlename" class="form-control">
-    </div>
+  <div class="form-group">
+    <label for="middlename">Middlename:</label>
+    <input type="text" required name="middlename" class="form-control">
+  </div>
 
-    <!-- <div class="form-group">
-      <label for="middlename">Middlename:</label>
-      <input type="text" name="middlename" class="form-control">
-    </div> -->
-    <div class="form-group">
-      <label for="phone">Phone:</label>
-      <input type="text" name="phone" placeholder="081..." max="11" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="gender">Group:</label>
-      <input type="text" name="team" min="01" max="51" class="form-control">
-    </div>
-    <div class="form-group">
-      <label for="group">Gender:</label>
-      <select name="gender" class="form-control">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
 
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="part">Part:</label>
-      <select name="part" class="form-control">
-        <option value="alto">Alto</option>
-        <option value="suprano">Suprano</option>
-        <option value="tenor">Tenor</option>
-        <option value="musician">Musician</option>
-      </select>
-    </div>
+  <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" required name="phone" placeholder="081234567891" minlength="11" maxlength="11"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="gender">Group:</label>
+    <input type="text" required name="team" min="01" max="51" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="group">Gender:</label>
+    <select name="gender" required class="form-control">
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
 
-    <div class="form-group">
-      <label for="availability">Availability:</label>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="part">Part:</label>
+    <select name="part" required class="form-control">
+      <option value="alto">Alto</option>
+      <option value="suprano">Suprano</option>
+      <option value="tenor">Tenor</option>
+      <option value="musician">Musician</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="availability">Availability:</label>
+    <div class="row clearfix">
+
       <label class="form-control"><input type="checkbox" value="Tuesday" name="availability"> Tuesday</label>
       <label class="form-control"><input type="checkbox" value="Wednesday" name="availability"> Wednesday</label>
       <label class="form-control"><input type="checkbox" value="Thursday" name="availability"> Thursday</label>
@@ -73,15 +71,17 @@
       <label class="form-control"><input type="checkbox" value="Saturday" name="availability"> Saturday</label>
       <label class="form-control"><input type="checkbox" value="Sunday" name="availability"> Sunday</label>
     </div>
-    <div class="form-group">
-      <label for="availability">Accomodation:</label>
-      <label class="form-control"><input type="radio" value="true" name="accomodation"> Yes</label>
-      <label class="form-control"><input type="radio" value="false" name="accomodation"> No</label>
+  </div>
+  <div class="form-group">
+    <label for="accomodation">Accomodation:</label>
+    <label class="form-control"><input type="radio" value="true" name="accomodation"> Yes</label>
+    <label class="form-control"><input type="radio" value="false" name="accomodation"> No</label>
 
-    </div>
+  </div>
 
-    <button name="register" type="submit" class="btn">Register</button>
+  <button name="register" type="submit" class="btn">Register</button>
   </form>
+  </div>
 
 </body>
 

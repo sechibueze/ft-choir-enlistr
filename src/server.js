@@ -11,7 +11,10 @@ const port = process.env.PORT || 3000;
 // Controllers
 const loginController = require('./controllers/loginController');
 const registerController = require('./controllers/registerController');
-const enlistController = require('./controllers/enlistController');
+const confirmController = require('./controllers/confirmController');
+// const resetController = require('./controllers/resetController');
+const authController = require('./controllers/authController');
+
 // Set up bodyParser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,13 +37,16 @@ app.use((req, res, next) => {
 
 app.use('/login', loginController);
 app.use('/register', registerController);
-app.use('/auth/enlist', enlistController);
-app.use('/', (req, res, next) => {
-  return res.render('index');
-});
+app.use('/confirm', confirmController);
+// app.use('/reset', resetController);
+app.use('/auth', authController);
 
+app.use('/', loginController);
+app.use('/docs', (req, res, next) => {
+  return res.render('docs');
+});
 app.use((req, res, next) => {
-  return res.render('error', { message: 'You are not permited' });
+  return res.render('error', { message: 'Oops! It looks like you missed your way' });
 });
 
 app.listen(port, () => {

@@ -1,0 +1,98 @@
+<% let title = 'Member Confirmation' %>
+<% include partials/header %>
+
+<body>
+
+  <div class="container">
+    <div class="images">
+      <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
+      <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
+    </div>
+    <% if(data.length === 1) {
+    data.forEach(member => {
+      let count = 0;
+  %>
+
+    <table>
+      <thead>
+        <tr>
+          <th> Fields</th>
+          <th>Values</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Choir ID:</th>
+          <td><%= member.choir_id %></td>
+        </tr>
+        <tr>
+          <th>Surname: </th>
+          <td><%= member.surname %></td>
+        </tr>
+        <tr>
+          <th>Firstname</th>
+          <td><%= member.firstname %></td>
+        </tr>
+        <tr>
+          <th>Middlename</th>
+          <td><%= member.middlename %></td>
+        </tr>
+        <tr>
+          <th>Phone</th>
+          <td><%= member.phone %></td>
+        </tr>
+        <tr>
+          <th>OTP: </th>
+          <td><%= member.otp %></td>
+        </tr>
+        <tr>
+          <th>Availability: </th>
+          <td><%= member.availability %></td>
+        </tr>
+        <tr>
+          <th>Accomodation:</th>
+          <td><%= member.accomodation %></td>
+        </tr>
+        <tr>
+          <th>Gender :</th>
+          <td><%= member.gender %></td>
+        </tr>
+        <tr>
+          <th>Part</th>
+          <td><%= member.part %></td>
+        </tr>
+        <tr>
+          <th> Group:</th>
+          <td><%= member.team %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% 
+    })} else {
+  %>
+
+    <h1 style="text-align: center;"> Confirm Registration </h1>
+    <form name="member-login" method="POST" action="/confirm">
+      <% if (message) {%>
+      <article class="message"> <%= message %>:(</article>
+      <%}%>
+              <div class="form-group">
+                <label for="choir_id">Member ID:</label>
+                <input type="text" name="choir_id" required class="form-control" placeholder="Enter your ID">
+              </div>
+              <!-- <div class="form-group">
+                <label for="otp">OTP:</label>
+                <input type="text" minlength="6" maxlength="6" name="otp" class="form-control" placeholder="Enter your OTP">
+              </div> -->
+              <button name="search" type="submit" class="btn">Search</button>
+            </form>
+
+    <% }%>
+
+
+  </div>
+
+  <script src=""></script>
+</body>
+
+</html>

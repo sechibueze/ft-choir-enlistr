@@ -18,15 +18,12 @@ module.exports = class Model {
     // const placeholder = this.prepareFields(values);//Object.keys(fields);
     const query = `INSERT INTO ${this.table} (${fields}) VALUES (${values}) ${clause}`;
     // logger(`${this.table} insert query : `, query, values);
-    console.log('query', query);
+    // console.log('query', query);
     return this.pool.query(query, values);
   }
 
   insertQuery(text, values) {
-    // const placeholder = this.prepareFields(values);//Object.keys(fields);
-    //const query = `INSERT INTO ${this.table} (${fields}) VALUES (${values}) ${clause}`;
-    // logger(`${this.table} insert query : `, query, values);
-    console.log('query :', text, values);
+
     return this.pool.query(text, values);
   }
 
@@ -38,7 +35,7 @@ module.exports = class Model {
 
   }
 
-  delete(clause) {
+  delete(clause = '') {
     const query = `DELETE FROM ${this.table} ${clause}`;
     // logger(`${this.table} delete query : `, query);
     return this.pool.query(query);

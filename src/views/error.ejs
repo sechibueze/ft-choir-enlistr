@@ -1,21 +1,15 @@
-<!DOCTYPE html>
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Enlistr | Invalid </title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="">
-</head>
+<% let title = 'Invalid' %>
+<% include partials/header %>
 
 <body>
-  <div class="error">
-    <% if (message) {%>
-    <article class="message"> <%= message %>:(</article>
-    <%}%>
-    
-    <h1> 404 </h1>
+  <div class="container">
+    <div class="error">
+      <h1 class="error404"> 404 </h1>
+      <% if (message) {%>
+      <article class="message"> <%= message %></article>
+      <%}%>
+         
+      </div>
   </div>
   <script src=""></script>
 </body>

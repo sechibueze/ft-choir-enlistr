@@ -1,0 +1,36 @@
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  body{
+    background: #ccc;
+  }
+  form[name="member-login"]{
+    width: 60%;
+    margin: auto;
+  }
+ }
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  body{
+    background: #eee;
+  }
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  body{
+    background: #ddd;
+  }
+  form[name="member-login"]{
+    width: 40%;
+    
+  }
+ }
+
+/* // Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  body{
+    background: #edf;
+  }
+}
