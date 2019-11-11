@@ -9,12 +9,11 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  const { choir_id, surname } = req.body;
-  const qualifier = { choir_id, surname };
-  // const fields = Object.keys(qualifier).join(', ');
-  // const values = `'${qualifier.choir_id}', '${qualifier.surname}'`;
-  // const returns = `RETURNING choir_id, surname `;
-  // console.log('key value: ', fields, values)
+  // const { choir_id, surname } = req.body;
+  // const qualifier = { choir_id, surname };
+  const choir_id = req.body.choir_id.toUpperCase();
+  const surname = req.body.surname.toUpperCase();
+  console.log('surname', req.body.surname.toUpperCase(), surname)
   const text = `INSERT INTO qualifiers (choir_id, surname) VALUES ($1, $2) RETURNING choir_id, surname`;
   const values = [
     choir_id, surname

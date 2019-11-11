@@ -1,28 +1,49 @@
-<% let title = 'Member Enlistment' %>
+<% let title = 'Admin Dashboard' %>
 <% include partials/header %>
 
 <body>
   <div class="container">
-    <div class="images">
-      <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
-      <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
+    <% include partials/navbar %>
+    <br>
+    <div class="content">
+      <span class="dash-hamburger"><i class="fa fa-bars"></i></span>
+      <div class="dash-container">
+        <div class="sidebar">
+          <span class="close">X</span>
+
+          <div class="row user">
+            <h2 class="title"> Enlistr</h2>
+
+          </div>
+          <% include partials/sidebar %>
+        </div>
+        <div class="main">
+          <h5> Welcome <%= admin.firstname %></h5>
+
+          <form name="member-login" method="POST" action="/auth/enlist">
+            <% if (message) {%>
+            <article class="message"> <%= message %></article>
+            <%}%>
+                  <div class="form-group">
+                    <label for="member-id">Member ID:</label>
+                    <input type="text" required maxlength="9" pattern="^(FTCHR)\d{4}" name="choir_id" class="form-control" placeholder="Enter your ID">
+                  </div>
+                  <div class="form-group">
+                    <label for="surname">Surname:</label>
+                    <input name="surname" pattern="[a-zA-Z]{1,15}" title="Only less than 5 alphabets are allowed" required type="text" class="form-control">
+                  </div>
+                  <button name="enlist" type="submit" class="btn">Enlist</button>
+          </form>
+
+         
+
+
+        </div>
+      </div>
     </div>
-    <form name="member-login" method="POST" action="/auth/enlist">
-      <% if (message) {%>
-      <article class="message"> <%= message %>:(</article>
-      <%}%>
-        <div class="form-group">
-          <label for="member-id">Member ID:</label>
-          <input type="text" required maxlength="9" pattern="^(FTCHR)\d{4}" name="choir_id" class="form-control" placeholder="Enter your ID">
-        </div>
-        <div class="form-group">
-          <label for="surname">Surname:</label>
-          <input name="surname" pattern="[a-zA-Z]{1,15}" title="Only less than 5 alphabets are allowed" required type="text" class="form-control">
-        </div>
-        <button name="enlist" type="submit" class="btn">Enlist</button>
-      </form>
+
   </div>
-  <script src=""></script>
+  <script src="/js/admin-dashboard.js"></script>
 </body>
 
 </html>

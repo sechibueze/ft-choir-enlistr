@@ -3,6 +3,8 @@
 
 <body>
   <div class="container">
+    <% include partials/navbar %>
+    <br>
     <div class="content">
       <span class="dash-hamburger"><i class="fa fa-bars"></i></span>
       <div class="dash-container">
@@ -16,9 +18,9 @@
           <% include partials/sidebar %>
         </div>
         <div class="main">
-          <a href="/auth/enlist" class="dash-add-link clearfix">Enlist &nbsp; <i class="fa fa-plus-circle"></i> </a>
+          <h5> Welcome <%= admin.firstname %></h5>
           <% if (message) {%>
-          <article class="message"> <%= message %>:(</article>
+          <article class="message"> <%= message %></article>
           <%}%>
 
           <table>
@@ -32,9 +34,10 @@
             </thead>
             <tbody>
               <% if (data.length > 0) {
-                    data.forEach(member => {
-                      let count = 0;
-                  %>
+                let count = 0;
+                data.forEach(member => {
+                      
+              %>
           <tr>
             <td><%= ++count %></td>
             <td><%= member.choir_id %></td>

@@ -8,7 +8,7 @@ module.exports = class Model {
 
   select(fields, clause = '') {
     const query = `SELECT ${fields} FROM ${this.table} ${clause}`;
-    console.log('select query:', query);
+
     return this.pool.query(query);
 
   }
@@ -16,9 +16,12 @@ module.exports = class Model {
   insert(fields, values, clause = '') {
     // const placeholder = this.prepareFields(values);//Object.keys(fields);
     const query = `INSERT INTO ${this.table} (${fields}) VALUES (${values}) ${clause}`;
-    // logger(`${this.table} insert query : `, query, values);
-    // console.log('query', query);
+
     return this.pool.query(query, values);
+  }
+  insertBulk(query) {
+
+    return this.pool.query(query);
   }
 
   insertQuery(text, values) {

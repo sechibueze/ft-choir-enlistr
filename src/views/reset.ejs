@@ -1,30 +1,51 @@
-<% let title = 'Application Reset - Irreversible' %>
+<% let title = 'Admin Dashboard' %>
 <% include partials/header %>
 
 <body>
   <div class="container">
-    <% include partials/navbar %>
-    <form name="member-login" method="POST" action="/auth/reset">
-      <div class="images">
-        <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
-        <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
-      </div>
-      <% if (message) {%>
-      <article class="message"> <%= message %></article>
-      <%}%>
-        <div class="form-group">
-          <label for="member-id">This process is irreversible:</label>
-          <select name="table">
-            <option value="qualifiers">Qualifiers</option>
-            <option value="members">Members</option>
-            <option value="others" selected>Others</option>
-          </select>
-         
+    <div class="content">
+      <span class="dash-hamburger"><i class="fa fa-bars"></i></span>
+      <div class="dash-container">
+        <div class="sidebar">
+          <span class="close">X</span>
+
+          <div class="row user">
+            <h2 class="title"> Enlistr</h2>
+
+          </div>
+          <% include partials/sidebar %>
         </div>
-        <button name="search" id="login-btn" type="submit" class="btn">Reset</button>
-      </form>
+        <div class="main">
+          <h5> Welcome <%= admin.firstname %></h5>
+
+          <form name="member-login" method="POST" action="/auth/reset">
+            <div class="images">
+              <img src="/img/ft-ictg-logo.jpg" alt="ft-choir-logo">
+              <img src="/img/ft-choir-logo.jpg" alt="ft-ictg-logo">
+            </div>
+            <% if (message) {%>
+            <article class="message"> <%= message %></article>
+            <%}%>
+                    <div class="form-group">
+                      <label for="member-id">This process is irreversible:</label>
+                      <select name="table">
+                        <option value="qualifiers">Qualifiers</option>
+                        <option value="members">Members</option>
+                        <option value="others" selected>Others</option>
+                      </select>
+                     
+                    </div>
+                    <button name="search" id="login-btn" type="submit" class="btn">Reset</button>
+          </form>
+         
+
+
+        </div>
+      </div>
+    </div>
+
   </div>
-  <script src=""></script>
+  <script src="/js/admin-dashboard.js"></script>
 </body>
 
 </html>

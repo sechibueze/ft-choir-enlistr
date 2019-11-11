@@ -7,6 +7,7 @@ const Member = new Model('members');
 const router = express.Router();
 const Nexmo = require('nexmo');
 const checkAuth = require('../middlewares/checkAuth');
+const changeCase = require('../helpers/changeCase');
 const nexmo = new Nexmo({
   apiKey: process.env.NEXMO_API_KEY,
   apiSecret: process.env.NEXMO_SECRET_KEY,
@@ -34,8 +35,10 @@ router.post('/', (req, res) => {
   // Organize the data
   const newData = req.body,
     sessionData = req.session.member;
-  const member = { ...newData, ...sessionData };
-
+  let member = { ...newData, ...sessionData };
+  // Turn values to Uppercase
+  member = changeCase(member, ['firstname', 'surname', 'middlename', 'gender']);
+  // console.log('members : ', member);
 
   // Generate OTP - One Time Password
   const otp = otpg.generate(6, { uppercase: false, specialChars: false });
@@ -72,14 +75,14 @@ router.post('/', (req, res) => {
       IHD!
       Dear ${surname}-${choir_id}, 
       Your OTP is: ${otp};
-      Please, come with this for verification
+      Kindly come to FA Multi-purpose hall for Shiloh 2019 Accreditation
       `;
       const data = { from, to, text };
-      // console.log('data: ', data);
+
       nexmo.message.sendSms(from, to, text, (err, responseData) => {
         if (err) {
           return res.render('success',
-            { message: `You may need to confirm your submission <a class='link' href='/confirm'> Confirm </a>` });
+            { message: `You may need to confirm your submission ` });
         } else {
           if (responseData.messages[0]['status'] === "0") {
             // console.log("Message sent successfully.", responseData.messages);

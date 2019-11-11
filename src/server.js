@@ -28,6 +28,7 @@ app.set('view engine', 'ejs');
 app.use((req, res, next) => {
   res.locals.data = {};
   res.locals.message = '';
+  res.locals.admin = {};
   next();
 });
 
@@ -35,13 +36,13 @@ app.use((req, res, next) => {
 // Routing
 
 
-app.use('/login', loginController);
+// app.use('/login', loginController);
 app.use('/register', registerController);
 app.use('/confirm', confirmController);
+app.use('/', loginController);
 // app.use('/reset', resetController);
 app.use('/auth', authController);
 
-app.use('/', loginController);
 app.use('/docs', (req, res, next) => {
   return res.render('docs');
 });

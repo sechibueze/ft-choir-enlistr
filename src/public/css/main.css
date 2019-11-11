@@ -20,10 +20,20 @@ a:hover{
 
 body{
   background: #ccc;
+  background-image:  url('../img/ft_bg.jpeg');
 }
 .container{
   width: 95%;
   margin: auto;
+}
+.container-fluid{
+  width: 99%;
+  margin: auto;
+  text-align: center;
+
+}
+.container-fluid table{
+  width: 100%;
 }
 .clearfix::after{
   display: block;
@@ -82,7 +92,7 @@ form[name="member-login"]{
   
   margin: auto;
 }
-form[name="member-login"] input[type='text'], select,input[type='tel'] {
+form[name="member-login"] input[type='text'], select,input[type='tel'], input[type='password'] {
   width: 100%;
   display: block;
   padding: 5px 8px;
@@ -219,8 +229,8 @@ article.doc{
     /* Main style */
 
     .main {
-      background: #320dcc;
-      color: #fff;
+      background: transparent;
+      color: #101;
       padding: 15px 20px;
 
     }
