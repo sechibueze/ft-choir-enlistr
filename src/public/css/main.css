@@ -20,7 +20,7 @@ a:hover{
 
 body{
   background: #ccc;
-  background-image:  url('../img/ft_bg.jpeg');
+  /* background-image:  url('../img/ft_bg.jpeg'); */
 }
 .container{
   width: 95%;
@@ -74,9 +74,13 @@ padding: 5px 10px;
 }
 .app-name{
   text-align: center;
+  color: #ccc;
+  background: #100;
+  
 }
 form{
   padding: 15px 20px;
+  background: #ccc;
 }
 
 form[name="member-login"]{
