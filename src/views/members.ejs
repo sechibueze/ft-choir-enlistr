@@ -27,6 +27,7 @@
                   <th>Availability</th>
                   <th>Accomodation</th>
                   <th>Gender</th>
+                  <th>Entry Date</th>
                 </tr>
               </thead>
               <tbody>
@@ -48,6 +49,7 @@
         <td><%= member.availability %></td>
         <td><%= member.accomodation %></td>
         <td><%= member.gender %></td>
+        <td><%= new Date(member.entry_date).toLocaleString() %></td>
       </tr>
 
       <% 

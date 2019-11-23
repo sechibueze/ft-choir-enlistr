@@ -5,7 +5,7 @@
   <% include partials/navbar %>
   <div class="container">
     <form name="member-login" method="POST" action="">
-     
+
       <% if (message) {%>
       <article class="message"> <%= message %></article>
       <%}%>
@@ -54,7 +54,7 @@
     <label for="part">Part:</label>
     <select name="part" required class="form-control">
       <option value="ALTO">Alto</option>
-      <option value="SUPRANO">Suprano</option>
+      <option value="SOPRANO">Soprano</option>
       <option value="TENOR">Tenor</option>
       <option value="MUSICIAN">Musician</option>
     </select>
@@ -74,8 +74,8 @@
   </div>
   <div class="form-group">
     <label for="accomodation">Accomodation:</label>
-    <label class="form-control"><input type="radio" value="true" name="accomodation"> Yes</label>
-    <label class="form-control"><input type="radio" value="false" name="accomodation"> No</label>
+    <label class="form-control"><input type="radio" value="YES" name="accomodation"> Yes</label>
+    <label class="form-control"><input type="radio" value="NO" name="accomodation"> No</label>
 
   </div>
 

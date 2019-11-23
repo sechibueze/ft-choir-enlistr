@@ -8,6 +8,7 @@ const router = express.Router();
 const Nexmo = require('nexmo');
 const checkAuth = require('../middlewares/checkAuth');
 const changeCase = require('../helpers/changeCase');
+const axios = require('axios');
 const nexmo = new Nexmo({
   apiKey: process.env.NEXMO_API_KEY,
   apiSecret: process.env.NEXMO_SECRET_KEY,
@@ -63,44 +64,52 @@ router.post('/', (req, res) => {
     .then(({ rows }) => {
 
 
-      // Take out leading zero phoneNumber = '89154678568
-      const phoneNumberFilter = phone.replace(/^0+/, '');
-      const code = 'NG';
-      const phoneNumberFormat = phoneUtil.parse(phoneNumberFilter, code);
-      const phoneNumber = phoneUtil.format(phoneNumberFormat, PNF.E164);
+      // // Take out leading zero phoneNumber = '89154678568
+      // const phoneNumberFilter = phone.replace(/^0+/, '');
+      // const code = 'NG';
+      // const phoneNumberFormat = phoneUtil.parse(phoneNumberFilter, code);
+      // const phoneNumber = phoneUtil.format(phoneNumberFormat, PNF.E164);
 
-      const to = `${phoneNumber}`;
-      const from = process.env.NEXMO_PHONE_NUMBER;
-      const text = `
-      IHD!
-      Dear ${surname}-${choir_id}, 
-      Your OTP is: ${otp};
-      Kindly come to FA Multi-purpose hall for Shiloh 2019 Accreditation
-      `;
-      const data = { from, to, text };
+      // const to = phoneNumber.replace(/\+/g, '');//`${phoneNumber}`;
+      const to = phone.replace(/^0+/, '234');
+      const from = process.env.SMS_SENDER_ID;
+      const text = `IHD! Dear ${surname}-${choir_id},Your OTP is: ${otp};Kindly come to FA Multi-purpose hall for Shiloh 2019 Accreditation`;
 
-      nexmo.message.sendSms(from, to, text, (err, responseData) => {
-        if (err) {
-          return res.render('success',
-            { message: `You may need to confirm your submission ` });
-        } else {
-          if (responseData.messages[0]['status'] === "0") {
-            // console.log("Message sent successfully.", responseData.messages);
-            req.session.member = null;
-            return res.render('success', { message: text });
-          } else {
+      // let SMS_API_KEY = '';
+      let base_url = 'https://www.bulksmsnigeria.com/api/v1/sms/create';
+      let url = `${base_url}?api_token=${process.env.SMS_API_KEY}&from=${from}&to=${to}&body=${text}&dnd=1`;
 
-            return res.render('success',
-              { message: `You may need to confirm your submission ${confirmLink}` });
-          }
-        }
-      });
+      axios.get(url)
+        .then(function (response) {
+
+          req.session.member = null;
+          return res.render('success', {
+            message: text,
+            data: {
+              status: 'success'
+            }
+          });
+        })
+        .catch(function (error) {
+
+          return res.render('success', {
+            message: `You may need to confirm your submission `,
+            data: {
+              status: 'Attention !!!'
+            }
+          });
+        })
 
     })
     .catch(e => {
 
-      return res.render('error',
-        { message: `Unprocessed: You may have registered, please confirm` });
+      return res.render('success',
+        {
+          message: `You may have registered, please confirm`,
+          data: {
+            status: 'Unprocessed !!!'
+          }
+        });
     });
 
 });

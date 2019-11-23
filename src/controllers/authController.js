@@ -100,8 +100,8 @@ router.post('/uploads', checkAdmin, upload.single('list'), (req, res) => {
 
           return res.render('error', { message: 'Error: Could Not Retrieve File Data' });
         }
-        let pgSQL = format('INSERT INTO qualifiers (surname, choir_id) VALUES %L RETURNING *', result.map(record => Object.values(record)))
-
+        let pgSQL = format('INSERT INTO qualifiers (surname, choir_id) VALUES %L', result.map(record => Object.values(record)))
+        // console.log('pgSQL : ', pgSQL);
         Qualifier.insertBulk(pgSQL)
           .then(({ rows }) => {
 
@@ -125,14 +125,18 @@ router.post('/uploads', checkAdmin, upload.single('list'), (req, res) => {
 
 
 router.get('/members', checkAdmin, (req, res) => {
-  Member.select('*', 'WHERE registered = true')
+  Member.select('*', 'ORDER BY entry_date ASC')
     .then(({ rows }) => {
       const data = rows;
       const message = "List of Registered members";
 
       return res.render('members', { data, message });
     })
-    .catch(e => res.render('members', { data, message: 'Cannot get memeber' }));
+    .catch(e => res.render('members', {
+      data: [],
+      message: 'Cannot get memeber'
+    }
+    ));
 
 });
 

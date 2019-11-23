@@ -44,12 +44,12 @@ const createTables = () => {
       team VARCHAR(255) NOT NULL ,
       part VARCHAR(255) NOT NULL ,
       gender VARCHAR(255) NOT NULL ,
-      phone VARCHAR(255) NOT NULL,
-      accomodation BOOLEAN NOT NULL DEFAULT FALSE,
+      phone VARCHAR(255) NOT NULL UNIQUE,
+      accomodation VARCHAR(255) NOT NULL,
       registered BOOLEAN NOT NULL DEFAULT FALSE,
       availability TEXT[] NOT NULL,
       otp VARCHAR(255), 
-      entry_date DATE NOT NULL DEFAULT NOW()
+      entry_date timestamptz NOT NULL DEFAULT NOW()
     );
     
   -- Create Qualifiers Table 

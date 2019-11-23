@@ -1,11 +1,14 @@
-<% let title = 'Success' %>
+<% let title = 'Status' %>
 <% include partials/header %>
 
 
 <body>
   <div class="container">
     <div class="error">
-      <h1 class="error404"> </h1>
+
+      <% if (data.status) {%>
+      <h1 class="error404"> <%= data.status %> </h1>
+      <%}%>
       <% if (message) {%>
       <article class="message"> <%= message %></article>
       <%}%>
