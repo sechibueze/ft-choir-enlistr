@@ -28,6 +28,7 @@
                   <th>Accomodation</th>
                   <th>Gender</th>
                   <th>Entry Date</th>
+                 <td>Delete</td>
                 </tr>
               </thead>
               <tbody>
@@ -50,6 +51,8 @@
         <td><%= member.accomodation %></td>
         <td><%= member.gender %></td>
         <td><%= new Date(member.entry_date).toLocaleString() %></td>
+        <td><a href="/auth/delete/<%= member.choir_id %>">Delete</a></td>
+
       </tr>
 
       <% 

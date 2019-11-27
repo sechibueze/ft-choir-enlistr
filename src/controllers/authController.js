@@ -172,4 +172,16 @@ router.get('/logout', (req, res) => {
   return res.redirect('/auth/login');
 });
 
+// delete members
+router.get('/delete/:id', (req, res) => {
+  // console.log('ft choir ID: ', req.params.id);
+  Member.delete(`WHERE choir_id='${req.params.id}'`).then(result => {
+    // console.log('delete ft choir ID: ', req.params.id, result);
+    return res.redirect('/auth/members');
+  }).catch(e => {
+    // console.log('err ft choir ID: ', req.params.id);
+    return res.redirect('/auth/members');
+  })
+
+})
 module.exports = router;
