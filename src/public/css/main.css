@@ -240,7 +240,15 @@ article.doc{
     }
 
 
-
+ .footer-text{
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 12px;
+    position: fixed;
+    bottom: 0px;
+    left: 0;
+  }
 
 
     .dash-add-link {
